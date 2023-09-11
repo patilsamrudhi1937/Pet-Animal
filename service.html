@@ -1,0 +1,149 @@
+<html>
+
+<head>
+    <meta charcet="utf-8">
+    <meta name="viewport" content="width=device-width inital-scaler=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubil:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Our Service</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html {
+            font-size: 50%;
+            overflow: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: sans-serif, fantasy;
+            line-height: 1.5;
+            font-size: 1.5rem;
+            font-weight: 900;
+            overflow: hidden;
+            color: blue;
+            background-color: lightcoral;
+            width: 100%;
+        }
+        
+        .heading-primary,
+        .heading-secondary,
+        .heading-tertiary {
+            font-weight: 700;
+            color: aquamarine;
+            letter-spacing: -0.5px;
+        }
+        
+        .our-services {
+            padding: 4.6rem 0;
+        }
+        
+        .container {
+            max-width: 220rem;
+            max-height: 250rem;
+            margin: 0 auto;
+            padding: 2.5rem 6.2rem;
+        }
+        
+        .grid-services {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .services-img {
+            width: 300px;
+            height: 200px;
+            border: 2px solid blue;
+            box-sizing: 9px;
+            padding: 10px;
+            border-radius: 10px;
+            float: left;
+        }
+        
+        .heading-secondary {
+            font-size: 4.4rem;
+            line-height: 1.2;
+            margin-bottom: 5.6rem;
+            text-align: center;
+        }
+        
+        .heading-tertiary {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin: 1.2rem;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        .first-services {
+            position: absolute;
+            left: 120px;
+        }
+        
+        .second-services {
+            position: absolute;
+            right: 120px;
+        }
+        
+        .third-services {
+            position: absolute;
+            left: 120px;
+            bottom: -1px;
+        }
+        
+        .fourth-services {
+            position: absolute;
+            right: 120px;
+            bottom: -1px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="our-services" id="services">
+        <div class="container">
+            <h2 class="heading-secondary">Our Serivces</h2>
+            <div class="grid-services">
+                <div class="first-services">
+                    <img class="services-img" src="logo/1.jpg">
+                    <h3 class="heading-tertiary">Full Grooming</h3>
+                    <p></p>
+
+                </div>
+                <div class="second-services">
+                    <img class="services-img" src="logo/2.jpg">
+                    <h3 class="heading-tertiary">Self Serve Dog wash</h3>
+                    <p></p>
+
+                </div>
+                <br />
+                <div class="third-services">
+                    <img class="services-img" src="logo/3.jpg">
+                    <h3 class="heading-tertiary">Wash & Blow Dry</h3>
+                    <p></p>
+
+                </div>
+                <div class="fourth-services">
+                    <img class="services-img" src="logo/4.jpg">
+                    <h3 class="heading-tertiary">Body and Paw Massage</h3>
+                    <p></p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

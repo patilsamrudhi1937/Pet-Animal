@@ -1,0 +1,290 @@
+<html>
+
+<head>
+    <meta charcet="utf-8">
+    <meta name="viewport" content="width=device-width inital-scaler=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubil:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>About us</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: lightcoral;
+            color: blue;
+        }
+        
+        h1 {
+            color: aqua;
+            font-family: fantasy;
+        }
+        
+        .img1 {
+            width: 1230px;
+            height: 400px;
+            border: 2px solid blue;
+            padding: 10px;
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .heading-primary,
+        .heading-secondary,
+        .heading-tertiary {
+            font-weight: 900;
+            color: aquamarine;
+            letter-spacing: -0.5px;
+        }
+        
+        .heading-primary {
+            font-size: 5.2rem;
+            line-height: 1.05;
+            margin-bottom: 3.2rem;
+        }
+        
+        .heading-secondary {
+            font-size: 4.4rem;
+            line-height: 1.2;
+            margin-bottom: 5.6rem;
+            text-align: center;
+            color: #523414;
+        }
+        
+        .heading-tertiary {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin: 1.2rem;
+        }
+        
+        .logo {
+            height: 10px;
+            font-size: 36px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+            color: #462d12;
+            font-family: fantasy;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 20px;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        .search-container {
+            background: #fff;
+            height: 30px;
+            border-radius: 30px;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: 0.8s;
+            box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .3), -4px -4px 6px 0 rgba(116, 125, 136, .2), inset -4px -4px 6px 0 rgba(255, 255, 255, .2), inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+        }
+        
+        .search-container:hover>.search-input {
+            width: 400px;
+        }
+        
+        .search-container .search-input {
+            background: transparent;
+            border: none;
+            outline: none;
+            width: 0px;
+            font-weight: 500;
+            font-size: 16px;
+            transition: 0.8s;
+        }
+        
+        .search-container .search-btn .fas {
+            color: #5cbdbb;
+        }
+        
+        @keyframes hoverShake {
+            0% {
+                transform: skew(0deg, 0deg);
+            }
+            25% {
+                transform: skew(5deg, 5deg);
+            }
+            75% {
+                transform: skew(-5deg, -5deg);
+            }
+            100% {
+                transform: skew(0deg, 0deg);
+            }
+        }
+        
+        .search-container:hover {
+            animation: hoverShake 0.15s linear 3;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .side-nav-categories {
+            padding: 0px;
+            position: absolute;
+            margin-top: 0px;
+            padding-bottom: 0px;
+            background-color: #fff;
+            border-width: 1px;
+            border-style: solid;
+            border-color: #f5f5f5 #eee #d5d5d5 #eee;
+            box-shadow: 0 5px 0 rgba(200, 200, 200, .2);
+            margin-bottom: 30px;
+            width: 250px;
+            margin: auto;
+            top: 100px;
+        }
+        
+        .title {
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 0px;
+            padding: 12px 25px 10px 25px;
+            position: relative;
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            background: #ed6663;
+            margin-top: 0px;
+            margin-left: -10px;
+        }
+        
+        .title:before {
+            content: '\f0c9';
+            font-family: fantasy;
+        }
+        
+        .title:after {
+            content: "";
+            height: 1px;
+            width: 1px;
+            border-style: solid;
+            border-width: 5px;
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            border-color: #d95451 #d95451 transparent transparent;
+        }
+        
+        ul.category-tabs {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul.category-tabs li {
+            display: block;
+            position: relative;
+            margin: 0;
+            border-bottom: 1px #ececec solid;
+            padding: 10px 18px;
+        }
+        
+        ul.sub-category-tabs li {
+            padding: 2px !important;
+        }
+        
+        ul.sub-category-tabs li {
+            border-bottom: 0px !important;
+        }
+        
+        ul.category-tabs li a {
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 0;
+            font-size: 12px;
+        }
+        
+        ul.category-tabs li a i {
+            top: 12px;
+            right: 18px;
+            position: absolute;
+            cursor: pointer;
+            width: 16px;
+            height: 16px;
+            padding: 2px;
+            color: #ed6663;
+        }
+    </style>
+</head>
+
+<body>
+
+    <center>
+        <header class="header">
+            <a href="#">
+                <p class="logo">Pet Animal<i class="fa fa-paw"></i></p>
+            </a>
+            <div class="search-container">
+                <input type="text" name="search" placeholder="Search..." class="search-input">
+                <a href="https://www.google.com" class="search-btn">
+                    <i class="fa fa-search"></i>
+                </a>
+            </div>
+            <h1><b>About us</b></h1>
+        </header>
+        <hr class="header-hr">
+        <img class="img1" src="logo/pet.jpg">
+    </center>
+    <div class="side-nav-categories">
+        <div class="title"><strong>Category</strong></div>
+        <ul id="category-tabs">
+            <li><a href="javascript:void" class="main-category">Pet Animal  &nbsp;<i class="fa fa-minus"></i></a>
+                <ul class="sub-category-tabs">
+                    <li><a href="javascript:void">Dogs</a></li>
+                    <li><a href="javascript:void">Cats</a></li>
+                    <li><a href="javascript:void">Cows</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul id="category-tabs">
+            <li><a href="javascript:void" class="main-category">Birds &nbsp;<i class="fa fa-minus"></i></a>
+                <ul class="sub-category-tabs">
+                    <li><a href="javascript:void">Parrots</a></li>
+                    <li><a href="javascript:void">Sparrow</a></li>
+                    <li><a href="javascript:void">New Species</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul id="category-tabs">
+            <li><a href="javascript:void" class="main-category">Other Animal &nbsp;<i class="fa fa-minus"></i></a>
+                <ul class="sub-category-tabs">
+                    <li><a href="javascript:void">Rabbit</a></li>
+                    <li><a href="javascript:void">Ducks</a></li>
+                    <li><a href="javascript:void">Sheep</a></li>
+                    <li><a href="javascript:void">Buffalo</a></li>
+                    <li><a href="javascript:void">Horse</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <script>
+        $('.category-tabs li a').click(function() {
+            $(this).next('ul').slideToggle('500');
+            $(this).find('i').toggleClass('fa-minus,fa-plus ')
+        });
+    </script>
+</body>
+
+</html>

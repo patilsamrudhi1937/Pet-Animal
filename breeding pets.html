@@ -1,0 +1,386 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scaler=1.0 ">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubil:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background-color: lightpink;
+            font-family: fantasy;
+            color: blue;
+        }
+        
+        h3 {
+            font-size: 2.3rem;
+            font-family: fantasy;
+            color: darkmagenta;
+            font-style: italic;
+        }
+        
+         :root {
+            --card-height: 40vw;
+            --card-margin: 4vw;
+            --card-top-offset: 1em;
+            --numcards: 4;
+            --outline-width: 0px;
+        }
+        
+        #cards {
+            padding-bottom: calc(var(--numcards) * var(--card-top-offset));
+            /* Make place at bottom, as items will slide to that position*/
+            margin-bottom: var(--card-margin);
+            /* Don't include the --card-margin in padding, as that will affect the scroll-timeline*/
+        }
+        
+        #card_1 {
+            --index: 1;
+        }
+        
+        #card_2 {
+            --index: 2;
+        }
+        
+        #card_3 {
+            --index: 3;
+        }
+        
+        #card_4 {
+            --index: 4;
+        }
+        
+        .card_5 {
+            --index: 5;
+        }
+        
+        .card_6 {
+            --index: 6;
+        }
+        
+        .card_7 {
+            --index: 7;
+        }
+        
+        .card_8 {
+            --index: 8;
+        }
+        
+        .card_9 {
+            --index: 9;
+        }
+        
+        .card {
+            position: sticky;
+            top: 0;
+            padding-top: calc(var(--index) * var(--card-top-offset));
+        }
+        
+        @supports (animation-timeline: works) {
+            @scroll-timeline .cards-element-scrolls-in-body {
+                source: selector(body);
+                scroll-offsets: selector(#cards) start 1, selector(#cards) start 0;
+                start: selector(#cards) start 1;
+                end: selector(#cards) start 0;
+                time-range: 4s;
+            }
+            .card {
+                --index0: calc(var(--index) - 1);
+                /* 0-based index */
+                --reverse-index: calc(var(--numcards) - var(--index0));
+                /* reverse index */
+                --reverse-index0: calc(var(--reverse-index) - 1);
+                /* 0-based reverse index */
+            }
+            .card__content {
+                transform-origin: 50% 0%;
+                will-change: transform;
+                --duration: calc(var(--reverse-index0) * 1s);
+                --delay: calc(var(--index0) * 1s);
+                animation: var(--duration) linear scale var(--delay) forwards;
+            }
+            @keyframes scale {
+                to {
+                    transform: scale(calc( 1.1 - calc(0.1 * var(--reverse-index))));
+                }
+            }
+        }
+        
+        .debug {
+            position: fixed;
+            top: 1em;
+            left: 1em;
+        }
+        
+        .debug::after {
+            content: " Show Debug";
+            margin-left: 1.5em;
+            color: white;
+            white-space: nowrap;
+        }
+        
+        .debug:checked~main {
+            --outline-width: 1px;
+        }
+        /** PAGE STYLING **/
+        
+        * {
+            /* Poor Man's Reset */
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background: rgb(58 29 43);
+            color: rgb(255, 255, 255);
+            text-align: center;
+            font-size: calc(1em + 0.5vw);
+        }
+        
+        header,
+        main {
+            width: 80vw;
+            margin: 0 auto;
+        }
+        
+        header {
+            height: 100vh;
+            display: grid;
+            place-items: center;
+        }
+        
+        #cards {
+            list-style: none;
+            outline: calc(var(--outline-width) * 10) solid blue;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(var(--numcards), var(--card-height));
+            gap: var(--card-margin);
+        }
+        
+        .card {
+            outline: var(--outline-width) solid hotpink;
+        }
+        
+        .card__content {
+            box-shadow: 0 0.2em 1em rgba(0, 0, 0, 0.1), 0 1em 2em rgba(0, 0, 0, 0.1);
+            background: rgb(255, 255, 255);
+            color: rgb(10, 5, 7);
+            border-radius: 1em;
+            overflow: hidden;
+            display: grid;
+            grid-template-areas: "text img";
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto;
+            align-items: stretch;
+            outline: var(--outline-width) solid lime;
+        }
+        
+        .card__content>div {
+            grid-area: text;
+            width: 80%;
+            place-self: center;
+            text-align: left;
+            display: grid;
+            gap: 1em;
+            place-items: start;
+        }
+        
+        .card__content>figure {
+            grid-area: img;
+            overflow: hidden;
+        }
+        
+        .card__content>figure>img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        h1 {
+            font-weight: 300;
+            font-size: 3.5em;
+        }
+        
+        h2 {
+            font-weight: 300;
+            font-size: 2.5em;
+        }
+        
+        p {
+            font-family: sans-serif;
+            font-weight: 300;
+            line-height: 1.42;
+        }
+        
+        .btn {
+            background: rgb(188 87 36);
+            color: rgb(255 255 255);
+            text-decoration: none;
+            display: inline-block;
+            padding: 0.5em;
+            border-radius: 0.25em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section>
+
+        <header>
+            <div>
+                <h1>New Blog:-</h1>
+                <p>New Breed of Dogs and Cats</p>
+            </div>
+        </header>
+        <main>
+            <ul id="cards">
+                <li class="card" id="card_1">
+                    <div class="card__content">
+                        <div>
+                            <h2>Labrador Dog</h2>
+                            <p>The Labrador possesses numerous endearing traits — intelligence, easy to train and being an excellent family companion.</p>
+                            <p><a href="https://nearbyanimals.com/Labrador-dog-details.php" class="btn btn--accent">Read more</a></p>
+                        </div>
+                        <figure>
+                            <img src="logo/23.jpg" alt="Image description">
+                        </figure>
+                    </div>
+                </li>
+                <li class="card" id="card_2">
+                    <div class="card__content">
+                        <div>
+                            <h2>Shepherd Dog</h2>
+                            <p>TSmart and easily trained, the ever-popular German shepherd is quite active and likes to have something to do.</p>
+                            <p><a href="https://nearbyanimals.com/German-shepherd-dog-details.php" class="btn btn--accent">Read more</a></p>
+                        </div>
+                        <figure>
+                            <img src="logo/12.jpg" alt="Image description">
+                        </figure>
+                    </div>
+                </li>
+                <li class="card" id="card_3">
+                    <div class="card__content">
+                        <div>
+                            <h2>Doberman Dog</h2>
+                            <p>Doberman pinschers are powerful, energetic dogs that need plenty of exercise. If not exercised, they are likely to become irritable or even aggressive. Careful socialization and obedience training from a young age are essential.</p>
+                            <p><a href="https://nearbyanimals.com/Doberman-dog-details.php" class="btn btn--accent">Read more</a></p>
+                        </div>
+                        <figure>
+                            <img src="logo/11.jpg" alt="Image description">
+                        </figure>
+                    </div>
+                </li>
+                <li class="card" id="card_4">
+                    <div class="card__content">
+                        <div>
+                            <h2>Retriever Dog</h2>
+                            <p>Golden retrievers are very versatile. They’re known as bird dogs, family pets, service dogs for the disabled, and search and rescue dogs..Because golden retrievers are easy to please, they respond positively to obedience training.
+                                They complement this trait by being playful, affectionate and even-tempered.</p>
+                            <p><a href="https://nearbyanimals.com/Golden-Retriever-dog-details.php" class="btn btn--accent">Read more</a></p>
+                        </div>
+                        <figure>
+                            <img src="logo/78.jpg" alt="Image description">
+                        </figure>
+                    </div>
+                </li>
+                <li class="card" id="card_5">
+                    <div class="card__content">
+                        <div>
+                            <h2>Rottweiler Dogs</h2>
+                            <p>Not recommended for first-time owners, the rottweiler needs extensive and continuous socialization to be a good family companion. However, this intelligent, confident dog is easy to keep in spite of the size.</p>
+                            <p><a href="https://nearbyanimals.com/Rottweiler-dog-details.php" class="btn btn--accent">Read more</a></p>
+                        </div>
+                        <figure>
+                            <img src="logo/rol.jpg" alt="Image description">
+                        </figure>
+                    </div>
+                </li>
+                <li class="card" id="card_6">
+                    <div class="card__content">
+                        <div>
+                            <h2>Pomeranian Dog</h2>
+                            <p>Perky and friendly, Pomeranians, even though small, need regular exercise and thrive on training. They are intelligent, but sometimes do not realize they are small and will confront larger dogs.</p>
+                            <p><a href="https://nearbyanimals.com/Pomeranian-dog-details.php" class="btn btn--accent">Read more</a></p>
+                        </div>
+                        <figure>
+                            <img src="logo/po.jpg" alt="Image description">
+                        </figure>
+                    </div>
+                </li>
+                <li class="card" id="card_7">
+                    <div class="card__content">
+                        <div>
+                            <h2>Husky Dog</h2>
+                            <p>The classic northern dogs, Siberian huskies are friendly and intelligent but somewhat independent and stubborn. They thrive on human company, but need firm, gentle training from puppyhood.</p>
+                            <p><a href="https://nearbyanimals.com/Husky-dog-details.php" class="btn btn--accent">Read more</a></p>
+                        </div>
+                        <figure>
+                            <img src="logo/67.jpg" alt="Image description">
+                        </figure>
+                    </div>
+                </li>
+                <li class="card" id="card_8">
+                    <div class="card__content">
+                        <div>
+                            <h2>Rajapalayam Dog</h2>
+                            <p>The Rajapalayam as the name suggests, draws its name from the small town of Rajapalayam in Tamil Nadu, which is located in the Virudunagar district of Tamil Nadu. This was the birthplace of this breed.</p>
+                            <p><a href="https://nearbyanimals.com/Rajapalayam-dog-details.php" class="btn btn--accent">Read more</a></p>
+                        </div>
+                        <figure>
+                            <img src="logo/ra.jpg" alt="Image description">
+                        </figure>
+                    </div>
+                </li>
+                <li class="card" id="card_9">
+                    <div class="card__content">
+                        <div>
+                            <h2>Chippiparai Dog</h2>
+                            <p>The Chippiparai gets its name from the town that it was developed in, Chippiparai, in Madurai, Tamil Nadu, India</p>
+                            <p><a href="https://nearbyanimals.com/Chippiparai-dog-details.php" class="btn btn--accent">Read more</a></p>
+                        </div>
+                        <figure>
+                            <img src="logo/ch.jpg" alt="Image description">
+                        </figure>
+                    </div>
+                </li>
+                <li class="card" id="card_10">
+                    <div class="card__content">
+                        <div>
+                            <h2>Kanni Dog</h2>
+                            <p>The Kanni dog is an endangered and ancient breed of dog from the state of Tamil Nadu. Kanni today is in Tirunelveli, Thoothukudi, and Virudhunagar districts.</p>
+                            <p><a href="https://nearbyanimals.com/kanni-dog-details.php" class="btn btn--accent">Read more</a></p>
+                        </div>
+                        <figure>
+                            <img src="logo/ka.jpg" alt="Image description">
+                        </figure>
+                    </div>
+                </li>
+                <li class="card" id="card_11">
+                    <div class="card__content">
+                        <div>
+                            <h2>Kombai Dog</h2>
+                            <p>The Kombai is named for the town in which it was developed: Kombai in Tamil Nadu, India. Also known as the Indian Bore Hound, Indian Bore Dog, or Combai.</p>
+                            <p><a href="https://nearbyanimals.com/Kombai-dog-details.php" class="btn btn--accent">Read more</a></p>
+                        </div>
+                        <figure>
+                            <img src="logo/kombai.jpg" alt="Image description">
+                        </figure>
+                    </div>
+                </li>
+            </ul>
+        </main>
+
+    </section>
+</body>
+
+</html>
